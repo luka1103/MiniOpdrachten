@@ -1,0 +1,249 @@
+<style>
+    * {
+        margin:0;
+        padding:5px;
+    }
+    h1 {
+        text-transform: uppercase;
+        font-family: Arial;
+        color:#367b52;
+        font-size: 40px;
+    }
+    h2 {
+        text-transform: uppercase;
+        font-style: italic;
+        font-family: Arial;
+        font-size: 15px;
+    }
+    p {
+        font-family: Arial;
+    }
+    .button {
+    background-color: #4682B4;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 2px;
+    transition-duration: 0.2s;
+    box-shadow: 0 5px #999;
+    }
+    .button:hover {
+        background-color: #37678e;
+        color: white;
+    }
+    .button:active {
+        background-color: #37678e;
+        box-shadow: 0 3px #5e6168;
+        transform: translateY(4px);
+    }
+    .input{
+        border-color: black;
+        background-color: #d1d1d1;
+        color: black;
+    }
+    .card {
+        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+        float: left;
+        width: 220px;
+        margin-bottom: 16px;
+        padding: 4 0px;
+        background-color: #dbdbdb;
+    }
+    .imgButton{
+            text-align:center;
+        }
+</style>
+
+<script>
+	function hallo_doei(){
+		var value = document.getElementById("input1").value.toLowerCase();
+		if (value == 'hallo'){
+			window.alert('Welkom!')
+		}
+		else if(value == 'doei'){
+			window.alert('Tot de volgende keer!')
+		}
+	}
+    function letter_e(){
+		var value = document.getElementById("input2").value.toLowerCase();
+		if (value.includes('e')){
+			window.alert('Hier zit de letter e in')
+		}
+	}
+    function hoevaak_letter(){
+		var value = document.getElementById("input31").value;
+		var letter = document.getElementById("input32").value;
+		sum = 0
+		for (let i = 0; i < value.length; i++) {
+			if(value[i] == letter){
+			sum += 1
+			}
+		}
+		console.log(sum)
+		if(sum == 0){
+			window.alert('In dit woord zit geen ' + letter)
+		} else if(sum == 1){
+			window.alert('In dit woord zit 1 ' + letter)
+		} else{
+			window.alert('In dit woord zitten ' + sum + ' ' + letter + "'s")
+		}
+	}
+    let countA = 0, countB = 0, countC = 0, countD = 0;
+    function changeDivContent(button){
+        if (button == 'A'){
+            countA++;
+            counter = countA;
+        }
+        else if (button == 'B'){
+            countB++;
+            counter = countB;
+        }
+        else if (button == 'C'){
+            countC++;
+            counter = countC;
+        }
+        else if (button == 'D'){
+            countD++;
+            counter = countD;
+        }
+        if(counter > 1){
+            window.alert('U heeft al ' + (counter - 1) + ' keer op ' + button + ' geklikt.')
+        }
+        document.getElementById("4_text").innerHTML += ("<br> U heeft op knop " + button + " geklikt. <i>" + counter + "</i>" );
+    }
+    let jaar = 0;
+    function seizoenen(image){
+        if(document.getElementById(image).src.endsWith('Winter.jpg')){
+            document.getElementById(image).src='Lente.jpg';
+            if(image == 'seizoen_6'){
+                jaar++;
+            }
+        }
+        else if (document.getElementById(image).src.endsWith('Lente.jpg')){
+            document.getElementById(image).src='Zomer.jpg';
+        }
+        else if (document.getElementById(image).src.endsWith('Zomer.jpg')){
+            document.getElementById(image).src='Herfst.jpg';
+        }
+        else if (document.getElementById(image).src.endsWith('Herfst.jpg')){
+            document.getElementById(image).src='Winter.jpg';
+        }
+        document.getElementById("6_text").innerHTML = ('<b>Jaar:</b> ' + jaar);
+
+        if (image == 'seizoen_8A'){
+            if(document.getElementById(image).src.endsWith('Lente.jpg')){
+                document.getElementById('seizoen_8B').style.visibility = "visible";
+            }
+            else{
+                document.getElementById('seizoen_8B').style.visibility = "hidden";
+            }
+        }
+    }
+    function seizoenen_hetzelfde(){
+        if(document.getElementById("seizoen_7A").src == document.getElementById("seizoen_7B").src){
+            document.getElementById("7_text").innerHTML = ("Ja!");
+        }
+        else{
+            document.getElementById("7_text").innerHTML = ("Nee");
+        }
+    }
+</script>
+
+<div>
+    <br><h1>Opdracht 1</h1><h2>Vriendelijke groeten</h2><br>
+    <p>
+        <i>Hallo</i> of <i>Doei</i>:<br>
+        <input id="input1" class="input"><br><br>
+        <button class="button" onclick="hallo_doei()">Klik hier</button><br><br>
+    </p>
+    <br><h1>Opdracht 2</h1><h2>Zit er een e in?</h2><br>
+    <p>
+        Vul hier uw woord in:<br>
+        <input id="input2" class="input"><br><br>
+        <button class="button" onclick="letter_e()">Klik hier</button><br><br>
+    </p>
+    <br><h1>Opdracht 3</h1><h2>Hoe vaak zit deze letter er in?</h2><br>
+    <p>
+        Vul hier uw woord in:<br>
+        <input id="input31" class="input"><br><br>
+        Vul hier uw letter in:<br>
+        <input id="input32" class="input"><br><br>
+        <button class="button" onclick="hoevaak_letter()">Klik hier</button><br><br>
+    </p>
+    <br><h1>Opdracht 4 & 5</h1><h2>Op welke knoppen is er geklikt? & op iedere knop mag maar 1 keer geklikt worden!</h2><br>
+    <p>
+        <button class="button" style="background-color:#123456" onclick="changeDivContent('A')">A</button>
+        <button class="button" style="background-color:#C88141" onclick="changeDivContent('B')">B</button>
+        <button class="button" style="background-color:#033E3E" onclick="changeDivContent('C')">C</button>
+        <button class="button" style="background-color:#7E3817" onclick="changeDivContent('D')">D</button>
+        <p id="4_text"></p>
+    </p>
+    <br><h1>Opdracht 6</h1><h2>Vier seizoenen, vier afbeeldingen!</h2><br>
+    <p>
+        <div class="card">
+            <img id="seizoen_6" src="Lente.jpg" style="width:210px">
+            <div class="container">
+                <p id="6_text" style="font-size: 20px;"><b>Jaar:</b> 0</p><br>
+                <button class="button" style="background-color: #033E3E" onclick="seizoenen('seizoen_6')" >Verander het seizoen</button>
+          </div>
+        </div>
+    </p>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <h1>Opdracht 7</h1><h2>Zijn de afbeeldingen hetzelfde?</h2><br>
+    <p>
+        <table>
+            <tr>
+                <td>
+          <div class="imgContainer">
+                    <div>
+                        <img id="seizoen_7A" src="Lente.jpg" style="width:210px">
+                    </div>
+                    <div class="imgButton">
+                        <button class="button" style="background-color: #C88141" onclick="seizoenen('seizoen_7A')">Verander het seizoen</button>
+                    </div>
+             </div>
+                </td>
+          <td>
+          <div class="imgContainer">
+                    <div>
+                        <img id="seizoen_7B" src="Lente.jpg" style="width:210px">
+                    </div>
+                    <div class="imgButton">
+                        <button class="button" style="background-color: #123456" onclick="seizoenen('seizoen_7B')">Verander het seizoen</button>
+                    </div>
+             </div>
+                </td>
+            </tr>
+        </table>
+        <br><button onclick="seizoenen_hetzelfde()">Zijn de seizoenen hetzelfde?</button>
+        <p id="7_text" style="font-size: 20px">...</p>
+    </p>
+    <br><h1>Opdracht 8</h1><h2>De lente begint!</h2><br>
+    <p>
+        <table>
+            <tr>
+                <td>
+          <div class="imgContainer">
+                    <div>
+                        <img id="seizoen_8A" src="Winter.jpg" style="width:210px">
+                    </div>
+                    <div class="imgButton">
+                        <button class="button" style="background-color: #033E3E" onclick="seizoenen('seizoen_8A')">Verander het seizoen</button>
+                    </div>
+             </div>
+                </td>
+          <td>
+          <div class="imgContainer">
+                    <div>
+                        <img id="seizoen_8B" src="lammetje.jpg" style="width:210px; visibility:hidden">
+                    </div>
+             </div>
+                </td>
+            </tr>
+        </table>
+    </p>
+</div>
